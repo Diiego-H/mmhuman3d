@@ -3,7 +3,6 @@ from typing import List, Tuple, Union
 
 import numpy as np
 import torch
-from mmcv.utils import print_log
 
 from mmhuman3d.core.conventions.keypoints_mapping import (
     agora,
@@ -292,12 +291,6 @@ def get_mapping(src: str,
                         unmapped_names.append(src_names[src_idx])
                         approximate_names.append(dst_name)
                         break
-
-        if unmapped_names:
-            warn_message = \
-                f'Approximate mapping {unmapped_names}' +\
-                f' to {approximate_names}'
-            print_log(msg=warn_message)
 
         mapping_list = [dst_idxs, src_idxs, intersection, approximate]
 
